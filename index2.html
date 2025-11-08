@@ -169,6 +169,10 @@
 </head>
 
 <body>
+    <audio autoplay loop style="display:none">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
     <div id="app">
         <div id="canvas-container"></div>
 
@@ -180,7 +184,8 @@
             <!-- الخطوة 1: البداية -->
             <div class="step active" id="step1">
                 <div class="emoji heart-beat">❤️</div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gradient" style="height: 100px;">عامله ايه يا ريتاج</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gradient" style="height: 100px;">عامله ايه يا ريتاج
+                </h1>
                 <p class="text-xl text-gray-700 mb-8">عملتلك مفاجأة</p>
                 <button class="btn" id="start-btn">يلا بينا ولا ايه ؟</button>
             </div>
@@ -189,7 +194,8 @@
             <div class="step" id="step2">
                 <div class="emoji">🎉</div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">كل سنه و انت طيبه دى اول حاجه</h2>
-                <p class="text-lg text-gray-700 mb-6">احب اقولك كل سنه و انت طيبه و انت شخص مميز بجد و انا اسف لكل حاجه وحشة عملتهالك و اتمنى تقبلى بـ دى كـهدية بسيطة و كل سنه و انت طيبه </p>
+                <p class="text-lg text-gray-700 mb-6">احب اقولك كل سنه و انت طيبه و انت شخص مميز بجد و انا اسف لكل حاجه
+                    وحشة عملتهالك و اتمنى تقبلى بـ دى كـهدية بسيطة و كل سنه و انت طيبه </p>
                 <button class="btn" id="next-btn-2">خدى عندك كملى بـس</button>
             </div>
 
@@ -236,7 +242,8 @@
                 <div class="emoji">🎂</div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">أمنيتي ليكى في عيد ميلادك</h2>
                 <p class="text-lg text-gray-700 mb-8">
-                    اتمنى ان تكون دى احلى سنة تمر عليكي و تكونى فرحانه على طول و تكون مليانه خير و اسعد السنين المرت عليكي
+                    اتمنى ان تكون دى احلى سنة تمر عليكي و تكونى فرحانه على طول و تكون مليانه خير و اسعد السنين المرت
+                    عليكي
                 </p>
                 <p class="text-xl font-semibold text-pink-600 mb-8">
                     كل سنه و انت طيبة يا ريتاج 💖🌹
@@ -248,6 +255,16 @@
     </div>
 
     <script>
+        document.getElementById('start-btn').addEventListener('click', () => {
+            currentStep = 2;
+            showStep(currentStep);
+
+            const audio = new Audio('song.mp3');
+            audio.loop = true;       // لو عايز الأغنية تعمل loop
+            audio.currentTime = 5;   // يبدأ من الثانية 5
+            audio.play();
+        });
+
         // Three.js Heart Background
         const container = document.getElementById('canvas-container');
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
